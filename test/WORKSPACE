@@ -1,0 +1,16 @@
+workspace(name = "test")
+
+local_repository(name = "com_github_johnynek_sbt_for_bazel",
+                 path = "../")
+
+load("@com_github_johnynek_sbt_for_bazel//:sbt_for_bazel.bzl", "sbt_jar")
+
+sbt_jar(
+    name = "scalding",
+    sbt_url = "https://dl.bintray.com/sbt/native-packages/sbt/0.13.12/sbt-0.13.12.zip",
+    sbt_sha256 = "1b62e76fadc916e5662f229e6c6193bbf7980e1ab83e3706c5795a764a6dbb69",
+    git_remote = "git@github.com:twitter/scalding.git",
+    git_sha = "7ed0f92a946ad8407645695d3def62324f78ac41",
+    targets = ["scalding-date"],
+    scala_version = "2.11.7",
+    version = "0.16.1-SNAPSHOT")
